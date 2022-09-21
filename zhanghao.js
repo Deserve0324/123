@@ -1,7 +1,7 @@
 $("#name").change(function(){//验证账号是否重复
 	var loginIdZ = /^[a-zA-Z]{1}([a-zA-Z0-9]|[_]){5,17}$/;
 	var loginId = this.value;
-	var inputId = "#loginid";
+	var inputId = "#name";
 	var setHtmlId = "#loginId_text";
 	var setHtmlText = "该账号已经被注册";
 	var inputValue = loginId;
