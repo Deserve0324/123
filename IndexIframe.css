@@ -87,7 +87,7 @@ body,html{
 #span2{
 	width: 21%;
 	height: 600px;
-	background-image: url(../img/background.jpg);
+	background-image: url(background.jpg);
 	display: inline-block;
 }
 /*轮播图结束*/
