@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="css/Register.css">
+		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+		 
+		 <script type="text/javascript" src="js/PasswordOk.js"></script>
+	</head>
+	<script type="text/javascript" src="js/LoginIdOrPhoneExist.js"></script>
+	<body>
+		<style>@CHARSET "UTF-8";
+.divimg{
+	background-image: url(../img/b3.jpg);
+}
+.divXia{
+	width: 500px;
+	height: auto;
+	padding-top: 30px;
+	margin: 0 auto;
+	border: 1px solid rgb(85, 170, 255);
+	padding-bottom: 55px;
+	border-radius: 0 0 10px 10px;
+	margin-bottom: 20px;
+	background-color: white;
+	
+}
+.divXia td input{
+	height: 30px;
+	width: 300px;
+	margin-top: 5px;
+	color: #000000;
+
+}
+/*.divXia td img{
+	margin-top: 15px;
+}*/
+.divXia td p{
+	margin-top: 5px;
+	color: #000000;
+	font-size: 15px;
+	margin-bottom: 5px;
+}
+.divXia td p span{
+	color:red;
+	text-decoration:none;
+	font-size:18px;
+}
+
+td:nth-child(1){
+	vertical-align: top;
+	text-align: center;
+	width: 150px;
+	height: auto;
+	font-size: 12px;
+}
+td:nth-child(2){
+	vertical-align: top;
+	width: 450px;
+	font-size: 10pt;
+}
+tr:nth-child(5) span{
+	margin-left: 10px;
+	text-decoration: underline;
+}
+tr:nth-child(5) span:hover{
+	cursor: pointer;
+}
+td p{
+	text-align: left;
+}
+td:nth-child(2) span{
+	text-decoration: underline;
+	color: #00f;
+	cursor: pointer;
+	
+}
+#psd1,
+#psd2,
+#phoneno,
+#username,
+#email,
+#sign{
+	border: 1px solid #aaf;
+	border-radius: 3px;
+	padding-left: 15px;
+	transition: all ease-in-out 0.3s;
+	border: 1px solid silver;
+	width: 305px;
+}
+#psd1:focus,
+#psd2:focus,
+#phoneno:focus,
+#loginid:focus,
+#username:focus,
+#email:focus,
+#sign:focus{
+	outline: none;
+	border: 1px solid #20A984;
+	border-radius: 5px;
+	background: rgba(170, 255, 255, 0.3);
+	box-shadow: 0 0 5px rgba(181, 252, 255, 0.5);
+	color: black;
+}
+#register_button{
+	width: 322px;
+	height: 32px;
+	border: 0;
+	background: #378ba9;
+	color: white;
+	border-radius: 5px;
+}
+/*性别按钮*/
+#usersexman,
+#usersexwoman{
+	width:15px;
+	height:15px;
+}
+#register_button:focus{
+	outline: none;
+}
+.inp::-webkit-input-placeholder{
+	color: red;
+}
+.inp:-ms-input-placeholder{
+	color: red;
+}
+.inp::-moz-placeholder{
+	color: red;
+}
+.inp:-moz-placeholder{
+	color: red;
+}
+
+#sex{
+	font-size: 14px;
+	margin-left: -180px;
+}</style>
+<script>
+$(function(){
+	$("#psd2").change(function(){
+		var psd1 = $("#psd1").val();
+		var psd2 = $("#psd2").val();
+		if(psd1 != psd2){
+			$("#psd2").focus();
+			$("#psd_text").empty();
+			$("#psd_text").html("密码不一致，请修改！");
+			$("#psd_text").css({"color":"red", "font-size":"16px"});
+		}else{
+			$("#psd_text").empty();
+			$("#psd_text").html("密码符合要求！");
+			$("#psd_text").css({"color":"#20A984", "font-size":"14px"});
+		}
+	})
+})
+var ip,iph,em=0;
+$(function(){
+	$("#loginid").change(function(){//验证账号是否重复
+		var loginIdZ = /^[a-zA-Z]{1}([a-zA-Z0-9]|[_]){5,17}$/;
+		var loginId = this.value;
+		var inputId = "#loginid";
+		var setHtmlId = "#loginId_text";
+		var setHtmlText = "该账号已经被注册";
+		var inputValue = loginId;
+		var keyValue = "loginId" + "="+ inputValue;
+//		alert(keyValue);
+		if(!loginIdZ.test(loginId)){
+			$(inputId).focus();
+			$(inputId).val("");
+			$(inputId).attr("placeholder","账号格式不正确！");
+			$(inputId).addClass("inp");
+		}else{
+			ip=1;
+		}
+	});
+	
+	$("input[id='phoneno']").change(function(){//验证手机号是否已经被使用
+		var phoneZ = /^1[3|5|7|8][0-9]{9}$/
+		var phone = this.value;
+		var inputId = "#phoneno";
+		var setHtmlId = "#phone_text";
+		var setHtmlText = "该手机号已经被使用";
+		var inputValue = phone;
+		var dataKey = "phone";
+		var keyValue = "phone" + "="+ inputValue;
+		if(!phoneZ.test(phone)){
+			$(inputId).focus();
+			$(inputId).val("");
+			$(inputId).attr("placeholder","请正确填写手机号！");
+			$(inputId).addClass("inp");
+		}else{
+		 iph=1;
+		}
+		
+	});
+	$("input[id='email']").change(function(){//验证邮箱是否已经被使用
+		var emailZ = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+		var email = this.value;
+		var inputId = "#email";
+		var setHtmlId = "#email_text";
+		var setHtmlText = "该邮箱已经被使用";
+		var inputValue = email;
+		var keyValue = "email="+inputValue;
+		if(!emailZ.test(email)){
+			$(inputId).focus();
+			$(inputId).val("");
+			$(inputId).attr("placeholder","请正确填写邮箱地址！");
+			$(inputId).addClass("inp");
+		}else{
+			em=1;
+		}
+	});
+
+})
+function login(){
+	if(ip & iph &em){
+		alert("注册成功！");
+	}
+	
+}
+
+</script>
+		<div class="divimg">
+		<div class="divXia">
+			<form id="form1" name="form1" >
+				<table border="0" align="center" cellpadding="0" cellspacing="0">
+					<h2 align="center">用户注册</h2>
+					<tr>
+						<td>
+							<p ><span>*</span>用户账号</p>
+							<input type="text" placeholder="请输入用户账号" name="loginid" id="loginid" required="required" pattern="[a-zA-Z][a-zA-Z0-9_]{5,17}" title="6-18个字符，包括字母、数字、下划线,字母开头"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p ><span>*</span>密码</p>
+							<input type="password" placeholder="请输入密码" name="psd1" id="psd1" required="required" pattern="[a-zA-Z0-9_!@#$%^&*]{6,16}" title="6~16个字符，区分大小写"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p id="psd_text"><span>*</span>确认密码</p>
+							<input type="password" placeholder="再次确认密码" name="psd2" id="psd2" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p><span>*</span>手机号码</p>
+							<input name="phoneno" placeholder="手机号码" id="phoneno" pattern="1[3|5|7|8][0-9]{9}" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p><span>*</span>昵称</p>
+							<input type="text" name="username" placeholder="你的专属昵称" id="username" required="required">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p><span>*</span>性别</p><span id=sex>
+							<input type="radio" name="usersex" id="usersexman" value="男" checked="checked">
+							<label for="usersexman">男</label>
+							<input type="radio" name="usersex" style="margin-left:25px;" id="usersexwoman" value="女">
+							<label for="usersexwoman">女</label></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p><span>*</span>用户邮箱</p>
+							<input type="text" name="email" placeholder="用户邮箱" id="email">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>个性签名</p>
+							<input type="text" name="sign" placeholder="快来介绍一下吧" id="sign">
+						</td>
+					</tr>
+					<tr >
+						<td ><input type="submit" id="register_button" value="立即注册" onclick="login()"/></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		</div>
+	</body>
+</html>
