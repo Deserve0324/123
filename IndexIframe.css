@@ -1,0 +1,102 @@
+@CHARSET "UTF-8";
+/*轮播图开始*/
+body,html{
+	padding:0;
+	margin:0;
+	overflow-x:hidden;
+}
+#div1{
+	height: 600px;
+}
+#zong_div{
+	width:78%;
+	height: 600px;
+	background: linear-gradient(to bottom,  #ffffff,#F5F5F5);
+	display: inline-block;
+}
+
+#container{
+	width: 900px;
+	height: 500px;
+	border: 0;
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto;
+}
+#list{
+	width: 7000px;
+	height: 350px;
+	position: absolute;
+	z-index: 1;
+}
+#list img{
+	width: 1000px;
+	float: left;
+}
+
+#buttons{
+	position: absolute;
+	height: 10px;
+	width: 100px;
+	z-index: 2;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -50px;
+}
+#buttons span{
+	cursor: pointer;
+	float: left;
+	border: 1px solid #fff;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	
+	margin-right: 5px;
+	background-color: rgba(33,33,33,0.5);
+}
+#buttons .on{
+	background-color: orangered;
+}
+.arrow{
+	cursor: pointer;
+	display: none;
+	line-height: 60px;
+	text-align: center;
+	font-size: 40px;
+	font-weight: bold;
+	width: 40px;
+	height: 70px;
+	position: absolute;
+	z-index: 2;
+	top: 190px;
+	background-color: rgba(33,33,33,0.3);
+	color: #fff;
+}
+.arrow:hover{
+	background-color: rgba(33,33,33,0.8);
+}
+#container:hover .arrow{
+	display: block;
+}
+#prev{
+	left: 0px;
+}
+#next{
+	right: 0px;
+}
+#span2{
+	width: 21%;
+	height: 600px;
+	background-image: url(../img/background.jpg);
+	display: inline-block;
+}
+/*轮播图结束*/
+.uuu{
+	padding: 90px 90px;
+}
+.uuu1{
+	padding-top: 20px;
+}
+.ooo{
+	align-items: center;
+}
