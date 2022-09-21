@@ -1,5 +1,6 @@
-$("#name").change(function(){//验证账号是否重复
-	var loginIdZ = /^[a-zA-Z]{1}([a-zA-Z0-9]|[_]){5,17}$/;
+$(function(){
+	$("#name").change(function(){//验证账号是否重复
+	var loginIdZ = /^[a-zA-Z]{0}([a-zA-Z0-9]|[_]){6,17}$/;
 	var loginId = this.value;
 	var inputId = "#name";
 	var setHtmlId = "#loginId_text";
@@ -13,3 +14,4 @@ $("#name").change(function(){//验证账号是否重复
 		$(inputId).addClass("inp");
 	}
 });
+})
